@@ -1,5 +1,5 @@
 # gobat
-gobat is a library that makes it easy to schedule one-way or parallel batch processes.
+gobat makes it easy to schedule one-way or parallel batch processes.
 
 ## Installing
 `$ go get -u github.com/deepoil/gobat`
