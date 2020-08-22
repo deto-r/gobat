@@ -79,13 +79,13 @@ func main() {
 
 	// Execution example
 	for {
-		if err := paraBat.ParallelBat(); err != nil {
+		if err := paraBat.ParallelBatRun(); err != nil {
 			log.Fatal("batch error")
 		}
 		paraCommon.NextSchedule()
 		fmt.Printf("next schedule is: %v\n", paraCommon.StartTime)
 
-		if err := oneWayBat.OneWayBat(bat1, bat2, bat3, bat4); err != nil {
+		if err := oneWayBat.OneWayBatRun(bat1, bat2, bat3, bat4); err != nil {
 			log.Fatal("batch error")
 		}
 		oneWayCommon.NextSchedule()

@@ -38,7 +38,7 @@ gobat is a library that makes it easy to schedule one-way or parallel batch proc
         
         // Execution
         for {
-            if err := oneWayBat.OneWayBat(bat1, bat2); err != nil {
+            if err := oneWayBat.OneWayBatRun(bat1, bat2); err != nil {
             	log.Fatal("batch error")
             }
             
@@ -106,7 +106,7 @@ gobat is a library that makes it easy to schedule one-way or parallel batch proc
 
         // Execution
         for {
-            if err := paraBat.ParallelBat(); err != nil {
+            if err := paraBat.ParallelBatRun(); err != nil {
             	log.Fatal("batch error")
             }
 

@@ -83,7 +83,7 @@ func (c *CommonBatConfig) NextSchedule() {
 }
 
 // Parallel batch processing
-func (b *ParallelBatConfig) ParallelBat() error {
+func (b *ParallelBatConfig) ParallelBatRun() error {
 	if b.Dependency != nil {
 		cs := b.Common
 		for {
@@ -113,7 +113,7 @@ func (b *ParallelBatConfig) ParallelBat() error {
 }
 
 // One-way batch processing
-func (b *OneWayBatConfig) OneWayBat(f ...func()) error {
+func (b *OneWayBatConfig) OneWayBatRun(f ...func()) error {
 	var running = make(chan int, 1)
 	cs := b.Common
 	for {
