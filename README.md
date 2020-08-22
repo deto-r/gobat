@@ -34,12 +34,12 @@ gobat is a library that makes it easy to schedule batch processes.
     		1000*60*60*24*time.Millisecond)
 
         // one way batch config
-	    oneWayBat := gobat.SetOneWayBatConfig(oneWayCommon)
+	oneWayBat := gobat.SetOneWayBatConfig(oneWayCommon)
         
         // Execution
         for {
             if err := oneWayBat.OneWayBat(bat1, bat2); err != nil {
-            			log.Fatal("batch error")
+            	log.Fatal("batch error")
             }
             
             // Set next run time
@@ -96,10 +96,10 @@ gobat is a library that makes it easy to schedule batch processes.
         p3 := gobat.SetPriority(3, bat4)
 
         // Set the execution order
-	    dependency, err := gobat.GenerateDependency(p1, p2, p3)
-	    if err != nil {
-		    log.Fatal(err)
-	    }
+	dependency, err := gobat.GenerateDependency(p1, p2, p3)
+	if err != nil {
+	   log.Fatal(err)
+	}
 
         // Set Config
         paraBat := gobat.SetParallelBatConfig(paraCommon, dependency)
@@ -107,14 +107,13 @@ gobat is a library that makes it easy to schedule batch processes.
         // Execution
         for {
             if err := paraBat.ParallelBat(); err != nil {
-            			log.Fatal("batch error")
-            		}
+            	log.Fatal("batch error")
+            }
 
             // Set next run time
             paraCommon.NextSchedule()
             fmt.Printf("next schedule is: %v\n", paraCommon.StartTime)
         }
-        
     }
 ```
 
