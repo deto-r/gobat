@@ -50,6 +50,7 @@ func bat7() {
 }
 
 func main() {
+	// set common config
 	oneWayCommon := gobat2.SetCommonBatConfig(
 		time.Now(),
 		1000*10*time.Millisecond,
