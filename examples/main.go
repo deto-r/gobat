@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	gobat2 "gobat"
+	gobat2 "github.com/deepoil/gobat"
 	"log"
 	"time"
 )

@@ -33,11 +33,11 @@ type Batch struct {
 	function []func()
 }
 
-func SetCommonBatConfig(st time.Time, ci, ac time.Duration) *CommonBatConfig {
+func SetCommonBatConfig(st time.Time, ci, ai time.Duration) *CommonBatConfig {
 	return &CommonBatConfig{
 		StartTime:      st,
 		CheckInterval:  ci,
-		ActionInterval: ac,
+		ActionInterval: ai,
 	}
 }
 
