@@ -54,10 +54,10 @@ func SetParallelBatConfig(common *CommonBatConfig, dependency *Dependency) *Para
 	}
 }
 
-func SetPriority(p int, fc ...func()) *Batch {
+func SetPriority(p int, fn ...func()) *Batch {
 	return &Batch{
 		priority: p,
-		function: fc,
+		function: fn,
 	}
 }
 
@@ -90,14 +90,15 @@ func (b *ParallelBatConfig) ParallelBatRun() error {
 			if time.Now().Equal(cs.StartTime) || time.Now().After(cs.StartTime) {
 				for _, bat := range b.Dependency.bats {
 					var running = make(chan int, len(bat.function))
-					for _, fc := range bat.function {
-						go func(fc func()) {
-							fc()
+					for _, fn := range bat.function {
+						go func(fn func()) {
+							fn()
 							running <- bat.priority
-						}(fc)
+						}(fn)
 					}
 					for {
 						if len(running) == len(bat.function) {
+							close(running)
 							<-running
 							break
 						}
@@ -118,13 +119,14 @@ func (b *OneWayBatConfig) OneWayBatRun(f ...func()) error {
 	cs := b.Common
 	for {
 		if time.Now().Equal(cs.StartTime) || time.Now().After(cs.StartTime) {
-			for _, fc := range f {
-				go func(fc func()) {
-					fc()
+			for _, fn := range f {
+				go func(fn func()) {
+					fn()
 					running <- 1
-				}(fc)
+				}(fn)
 				<-running
 			}
+			close(running)
 			break
 		}
 		time.Sleep(cs.CheckInterval)
