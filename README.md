@@ -1,6 +1,17 @@
 # gobat
 gobat makes it easy to schedule one-way or parallel batch processes.
 
+Create a batch group and run it sequentially.
+The following can be set.
+-Batch group start date and time
+-Interval to check the batch start time
+-Interval from batch group start date and time to next start
+
+In addition, 
+the following can be additionally set in the parallel batch setting.
+-Selection of batches to run in parallel and their priority
+
+
 ## Installing
 `$ go get -u github.com/deepoil/gobat`
 
