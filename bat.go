@@ -98,8 +98,8 @@ func (b *ParallelBatConfig) ParallelBatRun() error {
 					}
 					for {
 						if len(running) == len(bat.function) {
-							close(running)
 							<-running
+							close(running)
 							break
 						}
 					}
