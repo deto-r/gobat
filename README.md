@@ -17,7 +17,7 @@ the following can be additionally set in the parallel batch setting.
 
 ## Example
 **When you want to schedule a one-way batch process...**
-```
+```go
     import (
         "fmt"
         "gobat"
@@ -62,7 +62,7 @@ the following can be additionally set in the parallel batch setting.
 ```
 
 **When you want to schedule parallel batch processing...**
-```
+```go
     import (
         "fmt"
         "gobat"
